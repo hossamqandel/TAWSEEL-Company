@@ -1,4 +1,4 @@
-package com.hossam.tawsel.core
+package dev.hossam.tawseelcompany.core
 
 import androidx.navigation.NavDirections
 

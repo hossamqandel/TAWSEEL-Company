@@ -4,8 +4,8 @@ import android.content.Context
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
-import com.hossam.tawsel.core.DispatcherProvider
-import com.hossam.tawsel.core.StandardDispatchers
+import dev.hossam.tawseelcompany.core.DispatcherProvider
+import dev.hossam.tawseelcompany.core.StandardDispatchers
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

@@ -1,4 +1,4 @@
-package com.hossam.tawsel.core
+package dev.hossam.tawseelcompany.core
 
 import android.content.Context
 import android.content.res.ColorStateList
@@ -30,6 +30,7 @@ import com.facebook.shimmer.ShimmerFrameLayout
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.switchmaterial.SwitchMaterial
+import dev.hossam.tawseelcompany.core.Const
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
