@@ -1,12 +1,10 @@
 package com.hossam.tawsel.core
 
-import android.annotation.SuppressLint
-import com.hossam.tawsel.R
 import java.text.SimpleDateFormat
 
 object Const {
 
-    val BASE_URL by lazy { "https://www.tawseleg.com/api/driver/" }
+    val BASE_URL by lazy { "https://www.tawseleg.com/api/company/" }
     val Exception_MESSAGE_IO by lazy { "Couldn't reach server. Check your internet connection" }
     val Exception_MESSAGE_HTTP by lazy { "An expected error occurred" }
     val ORDER_STARTED by lazy { "Order has started" }
