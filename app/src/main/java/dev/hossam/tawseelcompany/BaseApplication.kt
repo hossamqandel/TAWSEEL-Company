@@ -6,6 +6,7 @@ import android.content.Context
 import android.os.Build
 import com.akexorcist.localizationactivity.ui.LocalizationApplication
 import dagger.hilt.android.HiltAndroidApp
+import dev.hossam.tawseelcompany.core.SharedPref
 import java.util.*
 
 @HiltAndroidApp
@@ -13,6 +14,7 @@ class BaseApplication : LocalizationApplication() {
 
     override fun onCreate() {
         super.onCreate()
+        SharedPref.init(this)
         createNotificationChannel()
     }
 
