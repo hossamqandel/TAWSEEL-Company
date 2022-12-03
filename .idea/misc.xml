@@ -3,7 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/AndroidProjects/TAWSEELCompany/app/src/main/res/drawable-v24/et_shape.xml" value="0.1835" />
+        <entry key="..\:/AndroidProjects/TAWSEELCompany/app/src/main/res/drawable/cursor_color.xml" value="0.1835" />
         <entry key="..\:/AndroidProjects/TAWSEELCompany/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
+        <entry key="..\:/AndroidProjects/TAWSEELCompany/app/src/main/res/layout/fragment_login.xml" value="0.25416666666666665" />
+        <entry key="..\:/AndroidProjects/TAWSEELCompany/app/src/main/res/layout/fragment_registration.xml" value="0.264" />
         <entry key="..\:/AndroidProjects/TAWSEELCompany/app/src/main/res/layout/fragment_splash.xml" value="0.25416666666666665" />
       </map>
     </option>

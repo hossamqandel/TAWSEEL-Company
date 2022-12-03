@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">توصيل</string>
+    <string name="login">تسجيل دخول</string>
+    <string name="forget_password">نسيت كلمة السر؟</string>
+    <string name="log_in">تسجيل الدخول</string>
+    <string name="log_in_to_continue">قم بتسجيل الدخول للمتابعه</string>
+    <string name="phone_number">رقم الهاتف</string>
+    <string name="password">كلمة المرور</string>
+
+    <string name="permission_denied">الرجاء السماح لجميع الأذونات اللازمة للمتابعة</string>
+    <string name="new_registration">تسجيل جديد</string>
+    <string name="full_name">الإسم بالكامل</string>
+    <string name="tax_registry_number">رقم السجل الضريبي</string>
+    <string name="copy_of_the_commercial_register">صورة السجل التجاري</string>
+    <string name="e_mail">البريد الإلكتروني</string>
+    <string name="repeated_password">اعادة كلمة المرور</string>
+    <string name="i_agree_to_the_terms_of_use_and_communication">أوافق علي سياسة الاستخدام والاتصال</string>
+    <string name="already_have_an_account_log_in">لديك حساب بالفعل؟ تسجيل دخول</string>
+
+
+</resources>

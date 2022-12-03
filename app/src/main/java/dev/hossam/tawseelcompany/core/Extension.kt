@@ -3,12 +3,17 @@ package dev.hossam.tawseelcompany.core
 import android.content.Context
 import android.content.res.ColorStateList
 import android.content.res.Resources
+import android.graphics.Color
+import android.graphics.Typeface
 import android.os.Handler
 import android.os.Looper
-import android.text.Editable
-import android.text.TextWatcher
+import android.text.*
+import android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
+import android.text.style.ForegroundColorSpan
+import android.text.style.StyleSpan
+import android.text.style.UnderlineSpan
 import android.util.Log
 import android.util.TypedValue
 import android.view.View
@@ -18,6 +23,7 @@ import android.view.WindowManager
 import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.addCallback
+import androidx.core.view.ViewCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
@@ -30,7 +36,6 @@ import com.facebook.shimmer.ShimmerFrameLayout
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.switchmaterial.SwitchMaterial
-import dev.hossam.tawseelcompany.core.Const
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -277,6 +282,37 @@ fun changeStatusBarContrastStyle(window: Window, lightIcons: Boolean) {
 
 
 
+fun changeTextColor(
+    startIdx: Int,
+    endIdx: Int, text: String,
+    colorId: Int = Color.MAGENTA,
+    isBold: Boolean = false,
+    isUnderLine:Boolean = false
+): SpannableString {
 
+    return try {
+        val mSpannableString by lazy { SpannableString(text) }
+        val mFcs by lazy { ForegroundColorSpan(colorId) }
+        val mStyleSpanBold by lazy { StyleSpan(Typeface.BOLD) }
+        val mUnderlineSpan by lazy { UnderlineSpan() }
 
+        mSpannableString.apply {
+            setSpan(mFcs, startIdx, endIdx, SPAN_EXCLUSIVE_EXCLUSIVE)
+            if (isBold) setSpan(mStyleSpanBold, startIdx, endIdx, SPAN_EXCLUSIVE_EXCLUSIVE)
+            if (isUnderLine) setSpan(mUnderlineSpan, startIdx, endIdx, SPAN_EXCLUSIVE_EXCLUSIVE)
+        }
+    } catch (e: Exception){
+        Log.i(TAG, "changeTextColor: $e")
+        SpannableString("")
+    }
+}
 
+fun isLeftToRight(): Boolean {
+    return TextUtils.getLayoutDirectionFromLocale(Locale.getDefault()) ==
+            View.LAYOUT_DIRECTION_LTR
+}
+
+fun View.isRTL(): Boolean {
+    val result = ViewCompat.getLayoutDirection(this) == ViewCompat.LAYOUT_DIRECTION_RTL
+    return result
+}

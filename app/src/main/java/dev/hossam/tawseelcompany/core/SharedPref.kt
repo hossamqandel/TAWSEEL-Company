@@ -32,4 +32,26 @@ object SharedPref {
         val editor = getSharedPreferences().edit()
         editor.putString(USER_TOKEN, value).apply()
     } fun getUserToken ():String = getSharedPreferences().getString(USER_TOKEN , "")!!
+
+
+    fun setUserName (value : String){
+        val editor = getSharedPreferences().edit()
+        editor.putString(USER_NAME, value).apply()
+    } fun getUserName ():String = getSharedPreferences().getString(USER_NAME , "")!!
+
+    fun setUserPhone (value : String){
+        val editor = getSharedPreferences().edit()
+        editor.putString(USER_PHONE, value).apply()
+    } fun getUserPhone ():String = getSharedPreferences().getString(USER_PHONE , "")!!
+
+
+    fun setUserEmail (value : String){
+        val editor = getSharedPreferences().edit()
+        editor.putString(USER_EMAIL, value).apply()
+    } fun getUserEmail ():String = getSharedPreferences().getString(USER_EMAIL , "")!!
+
+    fun setUserAddress (value : String){
+        val editor = getSharedPreferences().edit()
+        editor.putString(USER_ADDRESS, value).apply()
+    } fun getUserAddress ():String = getSharedPreferences().getString(USER_ADDRESS , "")!!
 }
