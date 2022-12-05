@@ -6,12 +6,14 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dev.hossam.tawseelcompany.core.DispatcherProvider
+import dev.hossam.tawseelcompany.core.NavDir.LOGIN_TO_HOME
 import dev.hossam.tawseelcompany.core.Resource
 import dev.hossam.tawseelcompany.core.SharedPref
 import dev.hossam.tawseelcompany.core.UiEvent
 import dev.hossam.tawseelcompany.feature_auth.domain.model.LoginForm
 import dev.hossam.tawseelcompany.feature_auth.domain.use_case.login.LoginUseCases
 import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collectLatest
@@ -85,6 +87,8 @@ class LoginViewModel @Inject constructor(
                 is Resource.Success -> {
                     SharedPref.setUserToken(resource.data?.access_token.toString())
                     _uiEvent.send(UiEvent.ShowSnackBar("Login Successfully"))
+                    delay(1000L)
+                    _uiEvent.send(UiEvent.Navigate(destination = LOGIN_TO_HOME))
                 }
                 is Resource.Error -> resource.message?.let {
                     _uiEvent.send(UiEvent.ShowSnackBar(it))

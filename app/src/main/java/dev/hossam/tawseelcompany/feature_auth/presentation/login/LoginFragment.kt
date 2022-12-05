@@ -71,10 +71,12 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
     private fun collectUiEvent() { binding.apply {
         collectLatestLifecycleFlow(viewModel.uiEvent){ uiEvent ->
             when(uiEvent){
-                is UiEvent.Navigate -> {}
+                is UiEvent.Navigate -> { navigate(uiEvent.destination) }
                 is UiEvent.ProgressBar -> {}
                 is UiEvent.Shimmer -> {}
                 is UiEvent.ShowSnackBar -> requireView().showSnackBar(uiEvent.message)
+                is UiEvent.View -> {}
+                is UiEvent.Box -> {}
             }
         }
     }

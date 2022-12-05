@@ -18,6 +18,16 @@
     <string name="repeated_password">اعادة كلمة المرور</string>
     <string name="i_agree_to_the_terms_of_use_and_communication">أوافق علي سياسة الاستخدام والاتصال</string>
     <string name="already_have_an_account_log_in">لديك حساب بالفعل؟ تسجيل دخول</string>
+    <string name="receive_your_money_and_deliver_on_us">استلم فلوسك \nوالتوصيل علينا</string>
+    <string name="order_now">اطلب دلوقتي</string>
+    <string name="current_orders">الطلبات الحالية</string>
+    <string name="cancel_order">الغاء الطلب</string>
+    <string name="show_details">عرض التفاصيل</string>
+    <string name="cost">التكلفة </string>
+    <string name="order_number">رقم الطلب #</string>
+    <string name="egp">ج.م</string>
+    <string name="completed">مكتمل</string>
+    <string name="no_available_data">لا توجد بيانات متاحة</string>
 
 
 </resources>

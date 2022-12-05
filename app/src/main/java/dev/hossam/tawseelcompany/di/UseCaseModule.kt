@@ -10,6 +10,8 @@ import dev.hossam.tawseelcompany.feature_auth.domain.use_case.login.LoginUseCase
 import dev.hossam.tawseelcompany.feature_auth.domain.use_case.login.ValidatePasswordUseCase
 import dev.hossam.tawseelcompany.feature_auth.domain.use_case.login.ValidatePhoneUseCase
 import dev.hossam.tawseelcompany.feature_auth.domain.use_case.register.*
+import dev.hossam.tawseelcompany.feature_home.domain.repository.IHomeRepository
+import dev.hossam.tawseelcompany.feature_home.domain.use_case.GetHomeUseCase
 import javax.inject.Singleton
 
 @Module
@@ -39,6 +41,11 @@ object UseCaseModule {
             validateTermUseCase = ValidateTermUseCase(),
             registrationUseCase = RegistrationUseCase(repository)
             )
+    }
+
+    @Provides
+    fun provideGetHomeUseCase(repo: IHomeRepository): GetHomeUseCase {
+        return GetHomeUseCase(repo)
     }
 
 

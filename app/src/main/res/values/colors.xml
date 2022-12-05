@@ -9,6 +9,7 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="shimmer_grey">#B6B6B6</color>
+    <color name="shimmer_light_grey">#dddddd</color>
     <color name="anti_flash_white">#F1F4F3</color>
     <color name="alice_blue">#F1F3FD</color>
     <color name="orange">#FF6600</color>

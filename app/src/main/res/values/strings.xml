@@ -19,5 +19,16 @@
     <string name="repeated_password">Repeated Password</string>
     <string name="i_agree_to_the_terms_of_use_and_communication">I agree to the Terms of Use and Communication</string>
     <string name="already_have_an_account_log_in">Already have an account? Log in</string>
-<!-- 25  30   -->
+    <string name="receive_your_money_and_deliver_on_us">Receive your money\nand deliver on us</string>
+    <string name="order_now">Order now</string>
+    <string name="current_orders">Current orders</string>
+    <string name="cancel_order">Cancel order</string>
+    <string name="show_details">Show details</string>
+    <string name="cost">Cost</string>
+    <string name="order_number">Order Number #</string>
+    <string name="egp">egp</string>
+    <string name="completed">Completed</string>
+    <string name="no_available_data">No available data</string>
+
+
 </resources>

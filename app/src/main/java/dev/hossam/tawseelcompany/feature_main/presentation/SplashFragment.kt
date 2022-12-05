@@ -3,6 +3,7 @@ package dev.hossam.tawseelcompany.feature_main.presentation
 import androidx.lifecycle.lifecycleScope
 import dagger.hilt.android.AndroidEntryPoint
 import dev.hossam.tawseelcompany.R
+import dev.hossam.tawseelcompany.core.NavDir.SPLASH_TO_HOME
 import dev.hossam.tawseelcompany.core.NavDir.SPLASH_TO_REGISTRATION
 import dev.hossam.tawseelcompany.core.SharedPref
 import dev.hossam.tawseelcompany.core.navigate
@@ -15,9 +16,18 @@ import kotlinx.coroutines.withContext
 @AndroidEntryPoint
 class SplashFragment : BaseFragment<FragmentSplashBinding>(FragmentSplashBinding::inflate) {
 
+    companion object {
+        private var isFirstVisit = true
+    }
+
     override fun onStart() {
         super.onStart()
         authState()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        isFirstVisit = false
     }
 
     private fun authState() {
@@ -28,7 +38,14 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>(FragmentSplashBinding
                     navigate(SPLASH_TO_REGISTRATION)
                 }
             }
-//            else navigate(SPLASH_TO_HOME)
+            else if (SharedPref.getUserToken().isNotBlank()){
+                if (isFirstVisit){
+                    withContext(Dispatchers.Main){
+                        delay(2000L)
+                        navigate(SPLASH_TO_HOME)
+                    }
+                } else navigate(SPLASH_TO_HOME)
+            }
         }
 
     }

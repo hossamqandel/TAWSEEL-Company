@@ -36,6 +36,7 @@ import com.facebook.shimmer.ShimmerFrameLayout
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.switchmaterial.SwitchMaterial
+import dev.hossam.tawseelcompany.R
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -64,6 +65,12 @@ fun ShimmerFrameLayout.visibilityState(isVisible: Boolean) {
     }
 }
 
+fun Context.getOrderStringIdByStatus(status: String): String{
+    return when(status.lowercase()){
+        Const.COMPLETED -> getString(R.string.completed)
+        else -> ""
+    }
+}
 infix fun EditText.onTextChanged(onTextChanged: (String) -> Unit) {
     this.addTextChangedListener(object : TextWatcher {
         override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
@@ -315,4 +322,12 @@ fun isLeftToRight(): Boolean {
 fun View.isRTL(): Boolean {
     val result = ViewCompat.getLayoutDirection(this) == ViewCompat.LAYOUT_DIRECTION_RTL
     return result
+}
+
+
+fun View.showHideShimmer(isVisible: Boolean) {
+    when(isVisible){
+        true -> this.isVisible = true
+        false -> this.isVisible = false
+    }
 }

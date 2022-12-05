@@ -106,6 +106,8 @@ class RegistrationFragment : BaseFragment<FragmentRegistrationBinding>(FragmentR
                     is UiEvent.ProgressBar -> {}
                     is UiEvent.Shimmer -> {}
                     is UiEvent.ShowSnackBar -> requireView().showSnackBar(event.message)
+                    is UiEvent.View -> {}
+                    is UiEvent.Box -> {}
                 }
             }
         }

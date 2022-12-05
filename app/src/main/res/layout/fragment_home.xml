@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/anti_flash_white"
+    android:fillViewport="true"
+    android:orientation="vertical"
+    tools:context=".feature_home.presentation.HomeFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineTop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="@dimen/_37sdp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineStart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="16dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineEnd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="16dp" />
+
+        <ImageView
+            android:id="@+id/iv_Notification"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_new_notification"
+            app:layout_constraintEnd_toStartOf="@+id/guidelineEnd"
+            app:layout_constraintTop_toTopOf="@+id/guidelineTop" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/home_iv_company"
+            android:layout_width="@dimen/_38sdp"
+            android:layout_height="@dimen/_38sdp"
+            app:layout_constraintStart_toStartOf="@+id/guidelineStart"
+            app:layout_constraintTop_toTopOf="@+id/guidelineTop"
+            tools:src="@drawable/person" />
+
+        <TextView
+            android:id="@+id/home_tv_CompanyName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:fontFamily="@font/cairo_regular"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_14ssp"
+            app:layout_constraintStart_toEndOf="@+id/home_iv_company"
+            app:layout_constraintTop_toTopOf="@+id/guidelineTop"
+            tools:text="محمد شادي" />
+
+        <TextView
+            android:id="@+id/home_tv_CompanyAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:fontFamily="@font/cairo_regular"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_12ssp"
+            app:layout_constraintBottom_toBottomOf="@+id/home_iv_company"
+            app:layout_constraintStart_toEndOf="@+id/home_iv_company"
+            tools:text="شارع 10 - باب الشعرية - القاهرة" />
+
+
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/materialCardView"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_200sdp"
+            android:layout_marginTop="@dimen/_16sdp"
+            app:cardCornerRadius="@dimen/_7sdp"
+            app:cardElevation="@dimen/_12sdp"
+            app:layout_constraintEnd_toStartOf="@+id/guidelineEnd"
+            app:layout_constraintStart_toStartOf="@+id/guidelineStart"
+            app:layout_constraintTop_toBottomOf="@+id/home_iv_company">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="@dimen/_145sdp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/delivery_hero"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <View
+                    android:id="@+id/view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="1dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/cairo_regular"
+                    android:text="@string/receive_your_money_and_deliver_on_us"
+                    android:textAlignment="center"
+                    android:textSize="@dimen/_13ssp"
+                    app:layout_constraintBottom_toTopOf="@+id/view"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imageView2" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/home_btn_OrderNow"
+                    android:layout_width="@dimen/_110sdp"
+                    android:layout_height="@dimen/_40sdp"
+                    android:backgroundTint="@color/orange"
+                    android:fontFamily="@font/cairo_semibold"
+                    android:stateListAnimator="@null"
+                    android:text="@string/order_now"
+                    android:textAllCaps="false"
+                    android:textSize="@dimen/_12ssp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imageView2"
+                    app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <!--    ***********    -->
+
+
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/materialCardView2"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_280sdp"
+            android:layout_marginTop="@dimen/_14sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/materialCardView">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guidelineInsiderStart"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_begin="16dp" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideInsiderlineEnd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_end="16dp" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_16sdp"
+                    android:fontFamily="@font/cairo_semibold"
+                    android:text="@string/current_orders"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_15ssp"
+                    app:layout_constraintStart_toStartOf="@+id/guidelineInsiderStart"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cvOrderBoard"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_210sdp"
+                    app:cardCornerRadius="@dimen/_6sdp"
+                    app:cardElevation="@dimen/_3sdp"
+                    app:cardUseCompatPadding="true"
+                    app:layout_constraintEnd_toStartOf="@id/guideInsiderlineEnd"
+                    app:layout_constraintStart_toEndOf="@id/guidelineInsiderStart"
+                    app:layout_constraintTop_toBottomOf="@+id/textView2">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="@dimen/_14sdp">
+
+                        <TextView
+                            android:id="@+id/home_tv_OrderNumber"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/cairo_semibold"
+                            android:text="@string/order_number"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_13ssp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/home_tv_OrderStatus"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/cairo_bold"
+                            android:textColor="@color/orange"
+                            android:textSize="@dimen/_12ssp"
+                            app:layout_constraintBottom_toBottomOf="@+id/home_tv_OrderNumber"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/home_tv_OrderNumber"
+                            tools:text="قيد التوصيل" />
+
+
+                        <View
+                            android:id="@+id/myview"
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="@dimen/_16sdp"
+                            android:background="@color/light_silver"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/home_tv_OrderNumber" />
+
+                        <ImageView
+                            android:id="@+id/imageView8"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_12sdp"
+                            android:backgroundTint="@color/orange"
+                            android:src="@drawable/ic_location_grey"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/myview"
+                            app:tint="@color/orange" />
+
+                        <TextView
+                            android:id="@+id/home_tv_CurrentLocation"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_5sdp"
+                            android:fontFamily="@font/cairo_regular"
+                            android:textSize="@dimen/_12ssp"
+                            app:layout_constraintBottom_toBottomOf="@+id/imageView8"
+                            app:layout_constraintStart_toEndOf="@+id/imageView8"
+                            app:layout_constraintTop_toTopOf="@+id/imageView8"
+                            tools:text="شارع 44 - السبتية - القاهره" />
+
+                        <ImageView
+                            android:id="@+id/imageView9"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_11sdp"
+                            android:src="@drawable/ic_clock"
+                            app:layout_constraintEnd_toEndOf="@+id/imageView8"
+                            app:layout_constraintStart_toStartOf="@+id/imageView8"
+                            app:layout_constraintTop_toBottomOf="@+id/imageView8" />
+
+                        <TextView
+                            android:id="@+id/home_tv_Time"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_6sdp"
+                            android:fontFamily="@font/cairo_regular"
+                            android:textSize="@dimen/_11ssp"
+                            app:layout_constraintBottom_toBottomOf="@+id/imageView9"
+                            app:layout_constraintStart_toEndOf="@+id/imageView9"
+                            app:layout_constraintTop_toTopOf="@+id/imageView9"
+                            tools:text="20/10/2021 ، 11:00ص" />
+
+                        <TextView
+                            android:id="@+id/textView6"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/cairo_regular"
+                            android:paddingBottom="@dimen/_2sdp"
+                            android:text="@string/cost"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_13ssp"
+                            app:layout_constraintBottom_toTopOf="@+id/home_btn_ShowDetails"
+                            app:layout_constraintStart_toStartOf="parent" />
+
+
+                        <TextView
+                            android:id="@+id/home_tv_Cost"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/cairo_bold"
+                            android:paddingBottom="@dimen/_2sdp"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_13ssp"
+                            app:layout_constraintBottom_toBottomOf="@+id/textView6"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/textView6"
+                            tools:text="30 egp" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/home_btn_ShowDetails"
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/_40sdp"
+                            android:backgroundTint="@color/bright_gray"
+                            android:fontFamily="@font/cairo_semibold"
+                            android:stateListAnimator="@null"
+                            android:text="@string/show_details"
+                            android:textAllCaps="false"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_13ssp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            tools:layout_editor_absoluteY="180dp" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.facebook.shimmer.ShimmerFrameLayout
+                    android:id="@+id/home_Shimmer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_16sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView2"
+                    tools:visibility="visible">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <include layout="@layout/shimmer_home" />
+                    </LinearLayout>
+                </com.facebook.shimmer.ShimmerFrameLayout>
+
+                <include
+                    android:id="@+id/home_EmptyBox"
+                    layout="@layout/no_data_available"
+                    android:visibility="gone"
+                    tools:visibility="visible"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <!--    ***********    -->
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</ScrollView>
