@@ -25,11 +25,11 @@ import kotlinx.coroutines.withContext
 class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::inflate) {
 
     private val viewModel: LoginViewModel by viewModels()
-    private val mCallBack by lazy { object : OnBackPressedCallback(true){
-            override fun handleOnBackPressed() {
-                findNavController().popBackStack()
-            }
-        } }
+//    private val mCallBack by lazy { object : OnBackPressedCallback(true){
+//            override fun handleOnBackPressed() {
+//                findNavController().popBackStack()
+//            }
+//        } }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -52,7 +52,6 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
             viewModel.onEvent(LoginFormEvent.Submit)
         }
 
-        requireActivity().onBackPressedDispatcher.addCallback(mCallBack)
 
     }
 
