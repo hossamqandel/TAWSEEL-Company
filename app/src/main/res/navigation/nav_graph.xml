@@ -83,4 +83,22 @@
         android:name="dev.hossam.tawseelcompany.feature_order.presentation.new_order.CreateOrderFragment"
         android:label="fragment_create_order"
         tools:layout="@layout/fragment_create_order" />
+    <fragment
+        android:id="@+id/profileFragment2"
+        android:name="dev.hossam.tawseelcompany.feature_profile.presentation.profile.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profileFragment2_to_changePasswordFragment"
+            app:destination="@id/changePasswordFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/changePasswordFragment"
+        android:name="dev.hossam.tawseelcompany.feature_profile.presentation.change_password.ChangePasswordFragment"
+        android:label="fragment_change_password"
+        tools:layout="@layout/fragment_change_password" />
 </navigation>
