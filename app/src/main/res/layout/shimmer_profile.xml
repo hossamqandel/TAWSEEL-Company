@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/_14sdp"
+    >
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/shimmer_profile_iv_driverAvatar"
+        android:layout_width="@dimen/_80sdp"
+        android:layout_height="@dimen/_60sdp"
+        android:background="@color/shimmer_light_grey"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/shimmer_profile_tv_Name"
+        android:layout_width="@dimen/_80sdp"
+        android:layout_height="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_16sdp"
+        android:background="@color/shimmer_light_grey"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/shimmer_profile_iv_driverAvatar"
+        />
+
+
+    <TextView
+        android:id="@+id/textView29"
+        android:layout_width="@dimen/_70sdp"
+        android:layout_height="@dimen/_16sdp"
+        android:layout_marginTop="@dimen/_12sdp"
+        android:background="@color/shimmer_light_grey"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/shimmer_profile_tv_Name" />
+
+    <EditText
+        android:id="@+id/shimmer_profile_et_FullName"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_marginTop="@dimen/_12sdp"
+        android:background="@color/shimmer_light_grey"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView29" />
+
+
+    <TextView
+        android:id="@+id/textView40"
+        android:layout_width="@dimen/_70sdp"
+        android:layout_height="@dimen/_16sdp"
+        android:layout_marginTop="@dimen/_14sdp"
+        android:background="@color/shimmer_light_grey"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/shimmer_profile_et_FullName" />
+
+    <EditText
+        android:id="@+id/shimmer_profile_et_phoneNum"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_marginTop="@dimen/_12sdp"
+        android:background="@color/shimmer_light_grey"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView40" />
+
+
+    <TextView
+        android:id="@+id/textView499"
+        android:layout_width="@dimen/_70sdp"
+        android:layout_height="@dimen/_16sdp"
+        android:layout_marginTop="@dimen/_14sdp"
+        android:background="@color/shimmer_light_grey"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/shimmer_profile_et_phoneNum" />
+
+    <EditText
+        android:id="@+id/shimmer_profile_et_Email"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_marginTop="@dimen/_12sdp"
+        android:background="@color/shimmer_light_grey"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView499" />
+
+    <TextView
+        android:id="@+id/textView44"
+        android:layout_width="@dimen/_70sdp"
+        android:layout_height="@dimen/_16sdp"
+        android:layout_marginTop="@dimen/_14sdp"
+        android:background="@color/shimmer_light_grey"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/shimmer_profile_et_Email" />
+
+    <EditText
+        android:id="@+id/shimmer_profile_et_address"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_marginTop="@dimen/_12sdp"
+        android:background="@color/shimmer_light_grey"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView44" />
+</androidx.constraintlayout.widget.ConstraintLayout>

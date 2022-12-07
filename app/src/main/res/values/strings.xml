@@ -30,5 +30,10 @@
     <string name="completed">Completed</string>
     <string name="no_available_data">No available data</string>
 
+    <string name="address">Address</string>
+    <string name="change_password">Change password</string>
+    <string name="save_changes">Save changes</string>
+    <string name="sign_out">Sign out</string>
+
 
 </resources>

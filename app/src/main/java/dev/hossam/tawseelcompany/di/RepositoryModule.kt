@@ -9,6 +9,8 @@ import dev.hossam.tawseelcompany.feature_auth.domain.repository.IAuthRepository
 import dev.hossam.tawseelcompany.feature_home.data.repository.HomeRepositoryImpl
 import dev.hossam.tawseelcompany.feature_home.domain.repository.IHomeRepository
 import dev.hossam.tawseelcompany.feature_main.data.remote.ITawseelService
+import dev.hossam.tawseelcompany.feature_profile.data.repository.ProfileRepositoryImpl
+import dev.hossam.tawseelcompany.feature_profile.domain.repository.IProfileRepository
 import javax.inject.Singleton
 
 @Module
@@ -25,5 +27,11 @@ object RepositoryModule {
     @Singleton
     fun provideHomeRepository(api: ITawseelService): IHomeRepository {
         return HomeRepositoryImpl(api)
+    }
+
+    @Provides
+    @Singleton
+    fun provideProfileRepository(api: ITawseelService): IProfileRepository {
+        return ProfileRepositoryImpl(api)
     }
 }

@@ -3,6 +3,8 @@ package dev.hossam.tawseelcompany.di
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ViewModelComponent
+import dagger.hilt.android.scopes.ViewModelScoped
 import dagger.hilt.components.SingletonComponent
 import dev.hossam.tawseelcompany.feature_auth.domain.repository.IAuthRepository
 import dev.hossam.tawseelcompany.feature_auth.domain.use_case.login.LoginUseCase
@@ -12,14 +14,18 @@ import dev.hossam.tawseelcompany.feature_auth.domain.use_case.login.ValidatePhon
 import dev.hossam.tawseelcompany.feature_auth.domain.use_case.register.*
 import dev.hossam.tawseelcompany.feature_home.domain.repository.IHomeRepository
 import dev.hossam.tawseelcompany.feature_home.domain.use_case.GetHomeUseCase
+import dev.hossam.tawseelcompany.feature_profile.domain.repository.IProfileRepository
+import dev.hossam.tawseelcompany.feature_profile.domain.use_case.GetProfileUseCase
+import dev.hossam.tawseelcompany.feature_profile.domain.use_case.ProfileUseCases
+import dev.hossam.tawseelcompany.feature_profile.domain.use_case.UpdateProfileUseCase
 import javax.inject.Singleton
 
 @Module
-@InstallIn(SingletonComponent::class)
+@InstallIn(ViewModelComponent::class)
 object UseCaseModule {
 
     @Provides
-    @Singleton
+    @ViewModelScoped
     fun provideLoginAuthUseCases(repository: IAuthRepository): LoginUseCases {
         return LoginUseCases(
             validatePhoneUseCase = ValidatePhoneUseCase(),
@@ -29,7 +35,8 @@ object UseCaseModule {
 
 
     @Provides
-    @Singleton
+//    @Singleton
+    @ViewModelScoped
     fun provideRegisterAuthUseCases(repository: IAuthRepository): RegisterUseCases {
         return RegisterUseCases(
             validateNameUseCase = ValidateNameUseCase(),
@@ -44,8 +51,18 @@ object UseCaseModule {
     }
 
     @Provides
+    @ViewModelScoped
     fun provideGetHomeUseCase(repo: IHomeRepository): GetHomeUseCase {
         return GetHomeUseCase(repo)
+    }
+
+    @Provides
+    @ViewModelScoped
+    fun provideProfileUseCases(repo: IProfileRepository): ProfileUseCases {
+        return ProfileUseCases(
+            getProfileUseCase = GetProfileUseCase(repo),
+            updateProfileUseCase = UpdateProfileUseCase(repo)
+        )
     }
 
 

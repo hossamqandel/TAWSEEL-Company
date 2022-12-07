@@ -11,4 +11,5 @@ object NavDir {
 
 
     val HOME_TO_CREATE_ORDER by lazy { R.id.action_homeFragment_to_createOrderFragment }
+    val PROFILE_TO_CHANGE_PASSWORD by lazy { R.id.action_profileFragment2_to_changePasswordFragment }
 }

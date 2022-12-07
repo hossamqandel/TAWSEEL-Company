@@ -29,5 +29,10 @@
     <string name="completed">مكتمل</string>
     <string name="no_available_data">لا توجد بيانات متاحة</string>
 
+    <string name="address">العنوان</string>
+    <string name="change_password">تغيير كلمة المرور</string>
+    <string name="save_changes">حفظ التغيرات</string>
+    <string name="sign_out">تسجيل خروج</string>
+
 
 </resources>
