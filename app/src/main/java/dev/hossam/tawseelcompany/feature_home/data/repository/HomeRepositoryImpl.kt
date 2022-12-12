@@ -31,7 +31,10 @@ class HomeRepositoryImpl constructor(
             emit(Resource.Error(Localization.CHECK_INTERNET_CONNECTION))
         } catch (e: HttpException){
             Log.i(TAG, "getHome: $e")
-            emit(Resource.Error(Localization.UNKNOWN_ERROR))
+            when(e.code()){
+                401 -> emit(Resource.Error(Localization.NOT_AUTHORIZED))
+                else -> emit(Resource.Error(Localization.UNKNOWN_ERROR))
+            }
         }
     }
 }
