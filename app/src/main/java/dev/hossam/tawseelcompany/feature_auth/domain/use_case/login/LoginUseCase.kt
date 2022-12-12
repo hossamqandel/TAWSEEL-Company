@@ -1,8 +1,8 @@
 package dev.hossam.tawseelcompany.feature_auth.domain.use_case.login
 
 import android.util.Log
-import dev.hossam.tawseelcompany.core.Const
-import dev.hossam.tawseelcompany.core.Const.MESSAGE_UNAUTHORIZED
+import dev.hossam.tawseelcompany.core.Localization
+import dev.hossam.tawseelcompany.core.ResponseErrorType
 import dev.hossam.tawseelcompany.core.Resource
 import dev.hossam.tawseelcompany.feature_auth.domain.model.LoginForm
 import dev.hossam.tawseelcompany.feature_auth.domain.model.User
@@ -11,7 +11,6 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import okio.IOException
 import retrofit2.HttpException
-import javax.inject.Inject
 
 class LoginUseCase (
     private val repo: IAuthRepository
@@ -30,12 +29,12 @@ class LoginUseCase (
 
         } catch (e: IOException){
             Log.i(TAG, "invoke: $e")
-            emit(Resource.Error(Const.Exception_MESSAGE_IO))
+            emit(Resource.Error(Localization.CHECK_INTERNET_CONNECTION))
         } catch (e: HttpException){
             Log.i(TAG, "invoke: $e")
-            when(e.code()){
-                401 -> emit(Resource.Error(MESSAGE_UNAUTHORIZED))
-                else -> emit(Resource.Error(Const.Exception_MESSAGE_HTTP))
+            when(e.code()) {
+                401 -> emit(Resource.Error(Localization.PHONE_OR_PASSWORD_ERROR))
+                else -> emit(Resource.Error(Localization.UNKNOWN_ERROR))
             }
         }
     }

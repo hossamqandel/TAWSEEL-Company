@@ -1,7 +1,6 @@
 package dev.hossam.tawseelcompany.feature_home.presentation
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
@@ -16,7 +15,6 @@ import dev.hossam.tawseelcompany.core.*
 import dev.hossam.tawseelcompany.core.NavDir.HOME_TO_CREATE_ORDER
 import dev.hossam.tawseelcompany.databinding.FragmentHomeBinding
 import dev.hossam.tawseelcompany.feature_main.presentation.util.BaseFragment
-import kotlinx.coroutines.flow.collectLatest
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -32,7 +30,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
 
         onClicks()
         collectState()
-        collectUiEvents()
+        collectUiEvent()
     }
 
     private fun initView(data: HomeState) {
@@ -67,18 +65,18 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
         }
     }
 
-    private fun collectUiEvents() {
-        collectLifecycleFlow(viewModel.uiEvent) { event ->
-            binding.apply {
-                when (event) {
-                    is UiEvent.Navigate -> findNavController().navigate(event.direction!!)
-                    is UiEvent.ProgressBar -> {}
-                    is UiEvent.Shimmer -> homeShimmer.visibilityState(event.isVisible)
-                    is UiEvent.ShowSnackBar -> { requireView().showSnackBar(event.message) }
-                    is UiEvent.View -> cvOrderBoard.isVisible = event.isVisible
-                    is UiEvent.Box -> homeEmptyBox.root.isVisible = event.isVisible
+    private fun collectUiEvent(){ binding.apply {
+        collectLatestLifecycleFlow(viewModel.uiEvent){ event ->
+            when(event){
+                is UiEvent.ShowSnackBar -> showSnackBar(event.message)
+                is UiEvent.Navigate -> event.direction?.let { navDirection -> navigate(navDirection) }
+                is UiEvent.View -> cvOrderBoard.isVisible = event.isVisible
+                is UiEvent.Shimmer -> homeShimmer.showHideShimmer(event.isVisible)
+                is UiEvent.Box -> {} //homeEmptyBox.root.isVisible = event.isVisible
+                else -> {}
                 }
             }
         }
     }
+
 }

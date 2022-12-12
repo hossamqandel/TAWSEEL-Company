@@ -4,11 +4,8 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dev.hossam.tawseelcompany.R
-import dev.hossam.tawseelcompany.core.DispatcherProvider
-import dev.hossam.tawseelcompany.core.NavDir
+import dev.hossam.tawseelcompany.core.*
 import dev.hossam.tawseelcompany.core.NavDir.REGISTRATION_TO_LOGIN
-import dev.hossam.tawseelcompany.core.Resource
-import dev.hossam.tawseelcompany.core.UiEvent
 import dev.hossam.tawseelcompany.feature_auth.domain.model.RegisterForm
 import dev.hossam.tawseelcompany.feature_auth.domain.use_case.register.RegisterUseCases
 import kotlinx.coroutines.channels.Channel
@@ -28,8 +25,12 @@ class RegistrationViewModel @Inject constructor(
     private val TAG by lazy { RegistrationViewModel::class.java.simpleName }
 
     private val addresses by lazy { listOf("Dokki, Cairo", "Giza, Al-Haram", "Tahrir Square, Cairo") }
+
     private val _state = MutableStateFlow(RegisterFormState())
     val state = _state.asStateFlow()
+
+    private val _uiText = Channel<UiText>()
+    val uiText = _uiText.receiveAsFlow()
 
     private val _uiEvent = Channel<UiEvent>()
     val uiEvent = _uiEvent.receiveAsFlow()
@@ -81,7 +82,11 @@ class RegistrationViewModel @Inject constructor(
                         repeatedPasswordError = repeatedPasswordResult.errorMessage,
                     )
                 )
-                acceptTermsResult.errorMessage?.let { _uiEvent.send(UiEvent.ShowSnackBar(it)) }
+                //TODO take a look again on this 2 lines
+                acceptTermsResult.errorMessage?.let {
+                    _uiText.send(UiText.StringResource(resId = R.string.terms_and_conditions_not_accepted))
+//                    _uiEvent.send(UiEvent.ShowSnackBar)
+                }
             }
             return
         }
@@ -122,11 +127,12 @@ class RegistrationViewModel @Inject constructor(
         useCases.registrationUseCase(registerForm).collectLatest { resource ->
             when(resource){
                 is Resource.Loading -> {}
-                is Resource.Success -> {
-                    _uiEvent.send(UiEvent.ShowSnackBar("Company successfully register, you can login now"))
-                }
+
+                is Resource.Success ->
+                    _uiEvent.send(UiEvent.ShowSnackBar(Localization.COMPANY_SUCCESSFULLY_REGISTER))
+
                 is Resource.Error -> {
-                    _uiEvent.send(UiEvent.ShowSnackBar(resource.message.toString()))
+                    resource.message?.let { errorMessage -> _uiEvent.send(UiEvent.ShowSnackBar(errorMessage)) }
                 }
             }
         }

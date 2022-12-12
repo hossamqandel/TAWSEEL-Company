@@ -177,7 +177,9 @@
                 android:hint="@string/password"
                 android:inputType="textPassword"
                 android:maxLines="1"
-                android:padding="@dimen/_8sdp"
+                android:paddingVertical="@dimen/_8sdp"
+                android:paddingStart="@dimen/_8sdp"
+                android:paddingEnd="@dimen/_32sdp"
                 android:textColor="@color/black"
                 android:textCursorDrawable="@drawable/cursor_color"
                 android:textSize="@dimen/_12ssp"
@@ -208,7 +210,9 @@
                 android:hint="@string/repeated_password"
                 android:inputType="textPassword"
                 android:maxLines="1"
-                android:padding="@dimen/_8sdp"
+                android:paddingVertical="@dimen/_8sdp"
+                android:paddingStart="@dimen/_8sdp"
+                android:paddingEnd="@dimen/_32sdp"
                 android:textColor="@color/black"
                 android:textCursorDrawable="@drawable/cursor_color"
                 android:textSize="@dimen/_12ssp"
@@ -263,6 +267,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/registration_btnLogin" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

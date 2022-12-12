@@ -1,24 +1,15 @@
 package dev.hossam.tawseelcompany.feature_auth.presentation.login
 
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
-import dev.hossam.tawseelcompany.R
 import dev.hossam.tawseelcompany.core.*
 import dev.hossam.tawseelcompany.databinding.FragmentLoginBinding
 import dev.hossam.tawseelcompany.feature_main.presentation.util.BaseFragment
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 @AndroidEntryPoint
@@ -36,7 +27,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
 
         initView()
         onClick()
-        collectUiEvent()
+        collectEvents()
     }
 
 
@@ -56,28 +47,25 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
     }
 
     private fun collectState() { binding.apply {
-        lifecycleScope.launchWhenStarted{
+        lifecycleScope.launchWhenStarted {
             viewModel.state.collectLatest {
-                withContext(Dispatchers.Main){
+                withContext(Dispatchers.Main) {
                     loginEtPhoneNum.error = it.phoneError
                     loginEtPass.error = it.passwordError
-                }
+                    }
                }
             }
         }
     }
 
-    private fun collectUiEvent() { binding.apply {
-        collectLatestLifecycleFlow(viewModel.uiEvent){ uiEvent ->
-            when(uiEvent){
-                is UiEvent.Navigate -> { navigate(uiEvent.destination) }
-                is UiEvent.ProgressBar -> {}
-                is UiEvent.Shimmer -> {}
-                is UiEvent.ShowSnackBar -> requireView().showSnackBar(uiEvent.message)
-                is UiEvent.View -> {}
-                is UiEvent.Box -> {}
+    private fun collectEvents(){ binding.apply {
+        collectLatestLifecycleFlow(viewModel.uiEvent){ event ->
+            when(event){
+                is UiEvent.Navigate -> navigate(event.destination)
+                is UiEvent.ShowSnackBar -> showSnackBar(event.message)
+                else -> {}
+                }
             }
         }
-    }
     }
 }

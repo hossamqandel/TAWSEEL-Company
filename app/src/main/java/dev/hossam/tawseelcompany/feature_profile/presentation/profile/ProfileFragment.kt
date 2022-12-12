@@ -45,10 +45,8 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(FragmentProfileBind
     }
 
     private fun collectState(){ binding.apply {
-        viewLifecycleOwner.lifecycleScope.launchWhenStarted {
-            viewModel.state.collectLatest { profile ->
-                initView(profile)
-                }
+        collectLatestLifecycleFlow(viewModel.state){ profile ->
+            initView(profile)
             }
         }
     }
@@ -60,24 +58,24 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(FragmentProfileBind
         profileEtAddress.setText(profile.address)
         }
     }
+
+    
     private fun collectEvents() { binding.apply {
             viewLifecycleOwner.lifecycleScope.launchWhenStarted {
                 viewModel.uiEvent.collectLatest { event ->
                     when (event) {
-                        is UiEvent.ProgressBar -> {}
-                        is UiEvent.Box -> {}
+                        is UiEvent.Navigate -> navigate(event.destination)
+                        is UiEvent.ShowSnackBar -> showSnackBar(event.message)
+                        is UiEvent.Shimmer -> shimmerProfile.showHideShimmer(event.isVisible)
                         is UiEvent.View -> {
                             btnChangeAvatar.isVisible = event.isVisible
                             ivDriverAvatar.isVisible = event.isVisible
                             profileConstraints.isVisible = event.isVisible
                         }
-                        is UiEvent.Shimmer -> shimmerProfile.visibilityState(event.isVisible)
-                        is UiEvent.ShowSnackBar -> requireView().showSnackBar(event.message)
-                        is UiEvent.Navigate -> navigate(event.destination)
+                        else -> {}
                     }
                 }
             }
         }
     }
-
 }

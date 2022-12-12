@@ -4,10 +4,8 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
-import dev.hossam.tawseelcompany.core.Const
-import dev.hossam.tawseelcompany.core.DispatcherProvider
-import dev.hossam.tawseelcompany.core.Resource
-import dev.hossam.tawseelcompany.core.UiEvent
+import dev.hossam.tawseelcompany.R
+import dev.hossam.tawseelcompany.core.*
 import dev.hossam.tawseelcompany.feature_home.domain.use_case.GetHomeUseCase
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.*
@@ -27,6 +25,9 @@ class HomeViewModel @Inject constructor(
 
     private val _uiEvent = Channel<UiEvent>()
     val uiEvent = _uiEvent.receiveAsFlow()
+
+    private val _uiText = Channel<UiText>()
+    val uiText = _uiText.receiveAsFlow()
 
     private val DEFAULT_ID by lazy { "-1" }
     private val _orderId = MutableStateFlow(DEFAULT_ID)
@@ -64,10 +65,10 @@ class HomeViewModel @Inject constructor(
                 }
 
                 is Resource.Error -> {
-                    _uiEvent.send(UiEvent.ShowSnackBar(resource.message.toString()))
-                    _uiEvent.send(UiEvent.Shimmer(false))
                     _uiEvent.send(UiEvent.View(false))
+                    _uiEvent.send(UiEvent.Shimmer(false))
                     _uiEvent.send(UiEvent.Box(true))
+                    resource.message?.let { errorMessage -> _uiEvent.send(UiEvent.ShowSnackBar(errorMessage)) }
                 }
             }
         }
@@ -78,7 +79,8 @@ class HomeViewModel @Inject constructor(
             HomeEvent.ShowDetails -> {
                 Log.i(TAG, "onEvent: ${orderId.value}")
                 if (orderId.value != DEFAULT_ID){
-                    val direction by lazy { HomeFragmentDirections.actionHomeFragmentToOrderDetailsFragment(orderId.value) }
+                    val direction by lazy {
+                        HomeFragmentDirections.actionHomeFragmentToOrderDetailsFragment(orderId.value) }
                     _uiEvent.send(UiEvent.Navigate(direction = direction))
                 }
             }

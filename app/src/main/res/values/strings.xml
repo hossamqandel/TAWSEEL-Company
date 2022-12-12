@@ -34,6 +34,23 @@
     <string name="change_password">Change password</string>
     <string name="save_changes">Save changes</string>
     <string name="sign_out">Sign out</string>
+    <string name="unauthorized">Unauthorized, Please try to login again</string>
+    <string name="authenticating">Authenticating…</string>
+    <string name="login_successfully">"Login Successfully"</string>
+    <string name="company_successfully_register">Company successfully register, you can login now</string>
+    <string name="terms_and_conditions_not_accepted">You should accept terms and conditions</string>
+    <string name="password_updated_successfully">Password updated successfully</string>
+
+    <string name="profile_updated_successfully">Profile data updated successfully</string>
+    <string name="change_the_password">Change the password</string>
+    <string name="old_password">Old password</string>
+    <string name="new_password">New password</string>
+    <string name="confirm_the_new_password">Confirm the new password</string>
+    <string name="phone_or_password_error">the phone number or password is incorrect. please try again</string>
+    <string name="please_check_internet_connection">please check your internet connection and try again</string>
+    <string name="unknown_error">unknown error occurred. please try again</string>
+    <string name="invalid_data_input">The given data was invalid</string>
+
 
 
 </resources>

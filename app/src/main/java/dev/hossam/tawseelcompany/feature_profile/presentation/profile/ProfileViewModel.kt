@@ -3,8 +3,10 @@ package dev.hossam.tawseelcompany.feature_profile.presentation.profile
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
+import dev.hossam.tawseelcompany.R
 import dev.hossam.tawseelcompany.core.*
 import dev.hossam.tawseelcompany.feature_profile.domain.use_case.ProfileUseCases
+import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -31,13 +33,11 @@ class ProfileViewModel @Inject constructor(
         useCases.getProfileUseCase().collectLatest { resource ->
             when(resource){
                 is Resource.Loading -> {
-                    _uiEvent.emit(UiEvent.View(false))
                     _uiEvent.emit(UiEvent.Shimmer(true))
+                    _uiEvent.emit(UiEvent.View(false))
                 }
                 is Resource.Success -> {
-
                     resource.data?.let {
-
                         it.data.apply {
                             _state.value = state.value.copy(
                                 avatar = Const.RESTAURANT_PIC,
@@ -48,13 +48,13 @@ class ProfileViewModel @Inject constructor(
                             )
                         }
                     }
-                    _uiEvent.emit(UiEvent.View(true))
                     _uiEvent.emit(UiEvent.Shimmer(false))
+                    _uiEvent.emit(UiEvent.View(true))
                 }
                 is Resource.Error -> {
-                    _uiEvent.emit(UiEvent.ShowSnackBar(resource.message.toString()))
-                    _uiEvent.emit(UiEvent.Shimmer(true))
                     _uiEvent.emit(UiEvent.View(false))
+                    _uiEvent.emit(UiEvent.Shimmer(true))
+                    resource.message?.let { errorMessage -> _uiEvent.emit(UiEvent.ShowSnackBar(errorMessage)) }
                 }
             }
         }
@@ -66,16 +66,18 @@ class ProfileViewModel @Inject constructor(
                 useCases.updateProfileUseCase(event.updateProfile).collectLatest { resource ->
                 when(resource){
                     is Resource.Loading -> {}
+
                     is Resource.Success -> {
-                        _uiEvent.emit(UiEvent.ShowSnackBar("Profile data updated successfully"))
+                        val successfulProfileUpdate by lazy { Localization.PROFILE_UPDATED_SUCCESSFULLY }
+                        _uiEvent.emit(UiEvent.ShowSnackBar(successfulProfileUpdate))
                     }
-                    is Resource.Error -> {
-                        _uiEvent.emit(UiEvent.ShowSnackBar(resource.message.toString()))
-                    }
+                    is Resource.Error ->
+                        resource.message?.let { errorMessage -> _uiEvent.emit(UiEvent.ShowSnackBar(errorMessage)) }
                 }
             }
+
             is ProfileEvent.ChangePassword -> {
-            val action by lazy { NavDir.PROFILE_TO_CHANGE_PASSWORD }
+                val action by lazy { NavDir.PROFILE_TO_CHANGE_PASSWORD }
                 _uiEvent.emit(UiEvent.Navigate(destination = action))
             }
         }

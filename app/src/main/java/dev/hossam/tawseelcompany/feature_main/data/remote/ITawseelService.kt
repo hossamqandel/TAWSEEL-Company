@@ -1,16 +1,14 @@
 package dev.hossam.tawseelcompany.feature_main.data.remote
 
 import com.google.gson.JsonParser
-import dev.hossam.tawseelcompany.core.Resource
 import dev.hossam.tawseelcompany.feature_auth.domain.model.LoginForm
 import dev.hossam.tawseelcompany.feature_auth.domain.model.RegisterForm
 import dev.hossam.tawseelcompany.feature_auth.domain.model.Registration
 import dev.hossam.tawseelcompany.feature_auth.domain.model.User
 import dev.hossam.tawseelcompany.feature_home.data.remote.dto.HomeDto
+import dev.hossam.tawseelcompany.feature_profile.domain.model.UpdatePassword
 import dev.hossam.tawseelcompany.feature_profile.domain.model.Profile
 import dev.hossam.tawseelcompany.feature_profile.domain.model.UpdateProfile
-import kotlinx.coroutines.flow.Flow
-import org.json.JSONObject
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
@@ -31,5 +29,8 @@ interface ITawseelService {
 
     @POST("auth/updateprofile")
     suspend fun updateProfile(@Body updateProfile: UpdateProfile): JsonParser
+
+    @POST("auth/updatepassword")
+    suspend fun updatePassword(@Body updatePassword: UpdatePassword): JsonParser
 
 }

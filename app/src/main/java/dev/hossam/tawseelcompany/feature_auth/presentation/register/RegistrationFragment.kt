@@ -19,6 +19,7 @@ import dev.hossam.tawseelcompany.databinding.FragmentRegistrationBinding
 import dev.hossam.tawseelcompany.feature_main.presentation.util.BaseFragment
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.withContext
 
 @AndroidEntryPoint
@@ -99,15 +100,11 @@ class RegistrationFragment : BaseFragment<FragmentRegistrationBinding>(FragmentR
     }
 
     private fun collectUiEvent(){
-        lifecycleScope.launchWhenStarted {
-            viewModel.uiEvent.collectLatest { event ->
+        viewLifecycleOwner.lifecycleScope.launchWhenStarted {
+            combine(viewModel.uiEvent, viewModel.uiText){ event, text ->
                 when(event){
-                    is UiEvent.Navigate -> {}
-                    is UiEvent.ProgressBar -> {}
-                    is UiEvent.Shimmer -> {}
-                    is UiEvent.ShowSnackBar -> requireView().showSnackBar(event.message)
-                    is UiEvent.View -> {}
-                    is UiEvent.Box -> {}
+                    is UiEvent.ShowSnackBar -> requireView().showSnackBar(text.asString(requireContext()))
+                    else -> {}
                 }
             }
         }

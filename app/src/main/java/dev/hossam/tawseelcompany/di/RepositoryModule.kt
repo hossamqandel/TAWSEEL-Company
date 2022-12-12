@@ -1,9 +1,13 @@
 package dev.hossam.tawseelcompany.di
 
+import android.app.Application
+import android.content.Context
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import dev.hossam.tawseelcompany.BaseApplication
 import dev.hossam.tawseelcompany.feature_auth.data.repository.AuthRepositoryImpl
 import dev.hossam.tawseelcompany.feature_auth.domain.repository.IAuthRepository
 import dev.hossam.tawseelcompany.feature_home.data.repository.HomeRepositoryImpl
@@ -25,6 +29,10 @@ object RepositoryModule {
 
     @Provides
     @Singleton
+    fun provideApplicationContext(@ApplicationContext context: Context) = context
+
+    @Provides
+    @Singleton
     fun provideHomeRepository(api: ITawseelService): IHomeRepository {
         return HomeRepositoryImpl(api)
     }
@@ -34,4 +42,6 @@ object RepositoryModule {
     fun provideProfileRepository(api: ITawseelService): IProfileRepository {
         return ProfileRepositoryImpl(api)
     }
+
+
 }

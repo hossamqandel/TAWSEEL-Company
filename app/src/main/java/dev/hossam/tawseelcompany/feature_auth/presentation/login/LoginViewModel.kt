@@ -1,15 +1,11 @@
 package dev.hossam.tawseelcompany.feature_auth.presentation.login
 
-import android.graphics.Color
-import android.util.Log
 import dagger.hilt.android.lifecycle.HiltViewModel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import dev.hossam.tawseelcompany.core.DispatcherProvider
+import dev.hossam.tawseelcompany.R
+import dev.hossam.tawseelcompany.core.*
 import dev.hossam.tawseelcompany.core.NavDir.LOGIN_TO_HOME
-import dev.hossam.tawseelcompany.core.Resource
-import dev.hossam.tawseelcompany.core.SharedPref
-import dev.hossam.tawseelcompany.core.UiEvent
 import dev.hossam.tawseelcompany.feature_auth.domain.model.LoginForm
 import dev.hossam.tawseelcompany.feature_auth.domain.use_case.login.LoginUseCases
 import kotlinx.coroutines.channels.Channel
@@ -32,6 +28,9 @@ class LoginViewModel @Inject constructor(
     private val _state = MutableStateFlow(LoginFormState())
     val state = _state.asStateFlow()
 
+
+    private val _uiText = Channel<UiText>()
+    val uiText = _uiText.receiveAsFlow()
 
 
     private val _uiEvent = Channel<UiEvent>()
@@ -81,18 +80,22 @@ class LoginViewModel @Inject constructor(
     }
 
     private fun makeLoginRequest(loginForm: LoginForm) = viewModelScope.launch(dispatcher.io) {
-        useCases.loginUseCase(loginForm).collect { resource ->
+        useCases.loginUseCase(loginForm).collectLatest { resource ->
             when(resource) {
-                is Resource.Loading -> { _uiEvent.send(UiEvent.ShowSnackBar("Authenticating...")) }
+                is Resource.Loading -> {
+                    _uiEvent.send(UiEvent.ShowSnackBar(Localization.AUTHENTICATING_LOADING))
+                }
                 is Resource.Success -> {
-                    SharedPref.setUserToken(resource.data?.access_token.toString())
-                    _uiEvent.send(UiEvent.ShowSnackBar("Login Successfully"))
-                    delay(1000L)
+                    val mToken by lazy { resource.data?.access_token.toString() }
+                    SharedPref.setUserToken(mToken)
+
+                    val successfullyLoginMessage by lazy { Localization.LOGIN_SUCCESSFULLY }
+                    _uiEvent.send(UiEvent.ShowSnackBar(successfullyLoginMessage))
+                    delay(800L)
                     _uiEvent.send(UiEvent.Navigate(destination = LOGIN_TO_HOME))
                 }
-                is Resource.Error -> resource.message?.let {
-                    _uiEvent.send(UiEvent.ShowSnackBar(it))
-                }
+                is Resource.Error ->
+                    resource.message?.let { errorMessage -> _uiEvent.send(UiEvent.ShowSnackBar(errorMessage)) }
             }
         }
     }

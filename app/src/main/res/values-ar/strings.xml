@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">توصيل</string>
+    <string name="app_name">توصيل كومباني</string>
     <string name="login">تسجيل دخول</string>
     <string name="forget_password">نسيت كلمة السر؟</string>
     <string name="log_in">تسجيل الدخول</string>
@@ -33,6 +33,26 @@
     <string name="change_password">تغيير كلمة المرور</string>
     <string name="save_changes">حفظ التغيرات</string>
     <string name="sign_out">تسجيل خروج</string>
+    <string name="authenticating">يرجى الانتظار…</string>
+    <string name="unauthorized">غير مسموح بالاستمرار, من فضلك اعد تسجيل الدخول مرة اخرى</string>
+    <string name="change_the_password">تغيير الرقم السري</string>
+    <string name="old_password">كلمة المرور القديمة</string>
+    <string name="new_password">كلمة المرور الجديدة</string>
+    <string name="confirm_the_new_password">تأكيد كلمة المرور الجديدة</string>
+
+    <string name="login_successfully">"تم تسجيل الدخول بنجاح"</string>
+    <string name="company_successfully_register">    تم انشاء حساب الشركه بنجاحو يمكنك الأن تسجيل الدخول</string>
+    <string name="terms_and_conditions_not_accepted">يجب الموافقة على الشروط و الأحكام</string>
+    <string name="password_updated_successfully">تم تحديث كلمة المرور بنجاح</string>
+    <string name="profile_updated_successfully">تم تحديث بيانات الملف الشخصي بنجاح</string>
+    <string name="phone_or_password_error">رقم الهاتف أو كلمة المرور غير صحيحة. حاول مرة اخرى</string>
+    <string name="please_check_internet_connection">يرجى التحقق من اتصالك بالإنترنت ثم حاول مرة أخرى</string>
+    <string name="unknown_error">حدث خطأ غير معروف. حاول مرة اخرى</string>
+    <string name="invalid_data_input">البيانات التي ادخلتها غير صحيحه</string>
+
+
+
+
 
 
 </resources>

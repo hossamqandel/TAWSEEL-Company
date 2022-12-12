@@ -1,8 +1,13 @@
 package dev.hossam.tawseelcompany.core
 
+import android.app.Application
+import android.content.Context
+import androidx.core.content.ContextCompat
+import dev.hossam.tawseelcompany.R
 import java.text.SimpleDateFormat
 
 object Const {
+
 
     val BASE_URL by lazy { "https://www.tawseleg.com/api/company/" }
     val Exception_MESSAGE_IO by lazy { "Couldn't reach server. Check your internet connection" }
@@ -14,6 +19,7 @@ object Const {
     private const val DATE_TIME_FORMAT = "hh:mm a"
     val sdf = SimpleDateFormat(DATE_TIME_FORMAT)
 
+    const val JSON_KEY_MESSAGE = "message"
 
     const val RESTAURANT_PIC = "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/McDonald%27s_SVG_logo.svg/2095px-McDonald%27s_SVG_logo.svg.png"
     const val DRIVER_PIC = "https://media.istockphoto.com/photos/m-on-my-way-picture-id635967404?b=1&k=20&m=635967404&s=170667a&w=0&h=Y0q6o_u351FikOUk2td8qOcEcrUDaAaf3DHzHzCWnok="

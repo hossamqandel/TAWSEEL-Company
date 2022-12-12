@@ -17,6 +17,7 @@ import dev.hossam.tawseelcompany.feature_home.domain.use_case.GetHomeUseCase
 import dev.hossam.tawseelcompany.feature_profile.domain.repository.IProfileRepository
 import dev.hossam.tawseelcompany.feature_profile.domain.use_case.GetProfileUseCase
 import dev.hossam.tawseelcompany.feature_profile.domain.use_case.ProfileUseCases
+import dev.hossam.tawseelcompany.feature_profile.domain.use_case.UpdatePasswordUseCase
 import dev.hossam.tawseelcompany.feature_profile.domain.use_case.UpdateProfileUseCase
 import javax.inject.Singleton
 
@@ -35,7 +36,6 @@ object UseCaseModule {
 
 
     @Provides
-//    @Singleton
     @ViewModelScoped
     fun provideRegisterAuthUseCases(repository: IAuthRepository): RegisterUseCases {
         return RegisterUseCases(
@@ -61,7 +61,10 @@ object UseCaseModule {
     fun provideProfileUseCases(repo: IProfileRepository): ProfileUseCases {
         return ProfileUseCases(
             getProfileUseCase = GetProfileUseCase(repo),
-            updateProfileUseCase = UpdateProfileUseCase(repo)
+            updateProfileUseCase = UpdateProfileUseCase(repo),
+            validatePasswordUseCase = ValidatePasswordUseCase(),
+            validateRepeatedPasswordUseCase = ValidateRepeatedPasswordUseCase(),
+            updatePasswordUseCase = UpdatePasswordUseCase(repo)
         )
     }
 

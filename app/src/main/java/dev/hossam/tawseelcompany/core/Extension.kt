@@ -23,6 +23,7 @@ import android.view.WindowManager
 import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.addCallback
+import androidx.core.text.isDigitsOnly
 import androidx.core.view.ViewCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
@@ -52,7 +53,7 @@ fun handler(timer: Long, block: () -> Unit) {
 }
 
 
-fun ShimmerFrameLayout.visibilityState(isVisible: Boolean) {
+fun ShimmerFrameLayout.showHideShimmer(isVisible: Boolean) {
     when (isVisible) {
         true -> {
             this.isVisible = isVisible
@@ -132,9 +133,17 @@ fun RecyclerView.onScrolled(data: (recyclerView: RecyclerView, dx: Int, dy: Int)
 }
 
 
-fun View.showSnackBar(message: String) {
-    Snackbar.make(this, message, Snackbar.LENGTH_LONG).show()
+fun Fragment.showSnackBar(message: String) {
+    if (message.isNotBlank()){
+        if (message.isDigitsOnly()){
+            val stringResourceMessage by lazy { resources.getString(message.toInt()) }
+            Snackbar.make(requireView(), stringResourceMessage, Snackbar.LENGTH_SHORT).show()
+        } else {
+            Snackbar.make(requireView(), message, Snackbar.LENGTH_SHORT).show()
+        }
+    }
 }
+
 
 fun Context.showToast(message: String) {
     Toast.makeText(this, message, Toast.LENGTH_LONG).show()
@@ -142,6 +151,10 @@ fun Context.showToast(message: String) {
 
 fun Fragment.navigate(navId: Int) {
     findNavController().navigate(navId)
+}
+
+fun Fragment.navigate(navDirections: NavDirections) {
+    findNavController().navigate(navDirections)
 }
 
 fun Fragment.navDirection(directions: NavDirections) {
@@ -212,12 +225,14 @@ fun Int.dpToPx(context: Context): Int {
 }
 
 fun <T> Fragment.collectLatestLifecycleFlow(flow: Flow<T>, collect: suspend (T) -> Unit) {
-    lifecycleScope.launch {
+    viewLifecycleOwner.lifecycleScope.launch {
         repeatOnLifecycle(Lifecycle.State.STARTED) {
             flow.collectLatest(collect)
         }
     }
 }
+
+
 
 fun <T> Fragment.collectLifecycleFlow(flow: Flow<T>, collect: suspend (T) -> Unit) {
     lifecycleScope.launch {
@@ -329,5 +344,31 @@ fun View.showHideShimmer(isVisible: Boolean) {
     when(isVisible){
         true -> this.isVisible = true
         false -> this.isVisible = false
+    }
+}
+
+fun getStringResourceByExceptionType(httpErrorType: String): Int {
+    return when(httpErrorType) {
+        ResponseErrorType.IO_EXCEPTION -> R.string.please_check_internet_connection
+        ResponseErrorType.HTTP_EXCEPTION_UNAUTHORIZED -> R.string.unauthorized
+        ResponseErrorType.HTTP_EXCEPTION_LOGIN -> R.string.phone_or_password_error
+        ResponseErrorType.HTTP_EXCEPTION_INVALID_DATA_INPUT -> R.string.invalid_data_input
+        ResponseErrorType.HTTP_EXCEPTION -> R.string.unknown_error
+        else -> 1
+    }
+}
+
+fun Fragment.getStringResourceByExceptionType(httpErrorType: String): String {
+    return if (httpErrorType.isDigitsOnly()){
+        getString(httpErrorType.toInt())
+    } else {
+        when(httpErrorType) {
+            ResponseErrorType.IO_EXCEPTION -> getString(R.string.please_check_internet_connection)
+            ResponseErrorType.HTTP_EXCEPTION_UNAUTHORIZED -> getString(R.string.unauthorized)
+            ResponseErrorType.HTTP_EXCEPTION_LOGIN -> getString(R.string.phone_or_password_error)
+            ResponseErrorType.HTTP_EXCEPTION_INVALID_DATA_INPUT -> getString(R.string.invalid_data_input)
+            ResponseErrorType.HTTP_EXCEPTION -> getString(R.string.unknown_error)
+            else -> ""
+        }
     }
 }
