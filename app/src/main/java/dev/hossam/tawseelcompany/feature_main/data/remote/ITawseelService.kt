@@ -6,6 +6,7 @@ import dev.hossam.tawseelcompany.feature_auth.domain.model.RegisterForm
 import dev.hossam.tawseelcompany.feature_auth.domain.model.Registration
 import dev.hossam.tawseelcompany.feature_auth.domain.model.User
 import dev.hossam.tawseelcompany.feature_home.data.remote.dto.HomeDto
+import dev.hossam.tawseelcompany.feature_order.data.remote.dto.OrdersDto
 import dev.hossam.tawseelcompany.feature_profile.domain.model.UpdatePassword
 import dev.hossam.tawseelcompany.feature_profile.domain.model.Profile
 import dev.hossam.tawseelcompany.feature_profile.domain.model.UpdateProfile
@@ -32,5 +33,8 @@ interface ITawseelService {
 
     @POST("auth/updatepassword")
     suspend fun updatePassword(@Body updatePassword: UpdatePassword): JsonParser
+
+    @GET("orders")
+    suspend fun getAllOrders(): OrdersDto
 
 }

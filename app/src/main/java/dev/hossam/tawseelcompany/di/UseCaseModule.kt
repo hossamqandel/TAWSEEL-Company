@@ -14,6 +14,9 @@ import dev.hossam.tawseelcompany.feature_auth.domain.use_case.login.ValidatePhon
 import dev.hossam.tawseelcompany.feature_auth.domain.use_case.register.*
 import dev.hossam.tawseelcompany.feature_home.domain.repository.IHomeRepository
 import dev.hossam.tawseelcompany.feature_home.domain.use_case.GetHomeUseCase
+import dev.hossam.tawseelcompany.feature_order.domain.repository.IOrderRepository
+import dev.hossam.tawseelcompany.feature_order.domain.use_case.GetOrdersUseCase
+import dev.hossam.tawseelcompany.feature_order.domain.use_case.OrderUseCases
 import dev.hossam.tawseelcompany.feature_profile.domain.repository.IProfileRepository
 import dev.hossam.tawseelcompany.feature_profile.domain.use_case.GetProfileUseCase
 import dev.hossam.tawseelcompany.feature_profile.domain.use_case.ProfileUseCases
@@ -65,6 +68,14 @@ object UseCaseModule {
             validatePasswordUseCase = ValidatePasswordUseCase(),
             validateRepeatedPasswordUseCase = ValidateRepeatedPasswordUseCase(),
             updatePasswordUseCase = UpdatePasswordUseCase(repo)
+        )
+    }
+
+    @Provides
+    @ViewModelScoped
+    fun provideOrderUseCases(repo: IOrderRepository): OrderUseCases {
+        return OrderUseCases(
+            getOrdersUseCase = GetOrdersUseCase(repo)
         )
     }
 
