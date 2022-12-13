@@ -44,7 +44,7 @@ class RegistrationFragment : BaseFragment<FragmentRegistrationBinding>(FragmentR
         initView()
         onClicks()
         collectState()
-        collectUiEvent()
+        collectEvent()
     }
 
     private fun initView(){ binding.apply {
@@ -90,24 +90,20 @@ class RegistrationFragment : BaseFragment<FragmentRegistrationBinding>(FragmentR
                     registrationEtEmail.error = errorMessage.emailError
                     registrationEtPassword.error = errorMessage.passwordError
                     registrationEtRepeatedPassword.error = errorMessage.repeatedPasswordError
-                    errorMessage.termsError?.let {
-                        registrationChBoxTerms.showSnackBar(it)
-                        }
+                    errorMessage.termsError?.let { errorMessage -> showSnackBar(errorMessage) }
                     }
                 }
             }
         }
     }
 
-    private fun collectUiEvent(){
-        viewLifecycleOwner.lifecycleScope.launchWhenStarted {
-            combine(viewModel.uiEvent, viewModel.uiText){ event, text ->
-                when(event){
-                    is UiEvent.ShowSnackBar -> requireView().showSnackBar(text.asString(requireContext()))
-                    else -> {}
-                }
-            }
-        }
+    private fun collectEvent(){
+       collectLatestLifecycleFlow(viewModel.uiEvent){ event ->
+           when(event){
+               is UiEvent.ShowSnackBar -> showSnackBar(event.message)
+               else -> {}
+           }
+       }
     }
 
     private fun changeAlreadyHaveAccountTextViewFieldStyles() {
