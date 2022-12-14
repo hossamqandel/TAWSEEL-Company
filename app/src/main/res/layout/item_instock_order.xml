@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cvOrderBoard"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_245sdp"
+        android:layout_marginTop="@dimen/_11sdp"
+        app:cardUseCompatPadding="true"
+        app:cardElevation="@dimen/_3sdp"
+        app:cardCornerRadius="@dimen/_6sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/_14sdp">
+
+            <TextView
+                android:id="@+id/tv_paymentType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/cairo_bold"
+                android:textColor="@color/orange"
+                android:textSize="@dimen/_12ssp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="كاش" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/iv_restaurantLogo"
+                android:layout_width="49dp"
+                android:layout_height="49dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@drawable/person" />
+
+            <TextView
+                android:id="@+id/tv_restaurantName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/cairo_regular"
+                android:textColor="@color/black"
+                android:layout_marginStart="@dimen/_6sdp"
+                android:textSize="@dimen/_14ssp"
+                app:layout_constraintStart_toEndOf="@+id/iv_restaurantLogo"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="كريسبي و كرانشي" />
+
+            <ImageView
+                android:id="@+id/imageView7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_location_grey"
+                app:layout_constraintBottom_toBottomOf="@+id/iv_restaurantLogo"
+                app:layout_constraintStart_toEndOf="@+id/iv_restaurantLogo"
+                app:layout_constraintTop_toBottomOf="@+id/tv_restaurantName" />
+
+            <TextView
+                android:id="@+id/tv_CurrentLocation2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/cairo_regular"
+                android:layout_marginStart="@dimen/_2sdp"
+                android:textSize="@dimen/_12ssp"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView7"
+                app:layout_constraintStart_toEndOf="@+id/imageView7"
+                app:layout_constraintTop_toTopOf="@+id/imageView7"
+                tools:text="شارع 10 - باب الشعرية - القاهره" />
+
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_showOrderDetails"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_12sdp"
+                android:fontFamily="@font/cairo_semibold"
+                android:text="@string/show_order_details"
+                android:textAllCaps="false"
+                android:textColor="@color/orange"
+                android:textSize="@dimen/_12ssp"
+                app:layout_constraintTop_toBottomOf="@+id/iv_restaurantLogo"
+                app:strokeColor="@color/orange"
+                tools:layout_editor_absoluteX="18dp" />
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:background="@color/light_silver"
+                app:layout_constraintEnd_toEndOf="@+id/btn_showOrderDetails"
+                app:layout_constraintStart_toStartOf="@+id/btn_showOrderDetails"
+                app:layout_constraintTop_toBottomOf="@+id/btn_showOrderDetails" />
+
+            <ImageView
+                android:id="@+id/imageView8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_12sdp"
+                android:backgroundTint="@color/orange"
+                android:src="@drawable/ic_location_grey"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view"
+                app:tint="@color/orange" />
+
+            <TextView
+                android:id="@+id/tv_CurrentLocation3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/cairo_regular"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:textSize="@dimen/_12ssp"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView8"
+                app:layout_constraintStart_toEndOf="@+id/imageView8"
+                app:layout_constraintTop_toTopOf="@+id/imageView8"
+                tools:text="شارع 44 - السبتية - القاهره" />
+
+            <ImageView
+                android:id="@+id/imageView9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_11sdp"
+                android:src="@drawable/ic_clock"
+                app:layout_constraintEnd_toEndOf="@+id/imageView8"
+                app:layout_constraintStart_toStartOf="@+id/imageView8"
+                app:layout_constraintTop_toBottomOf="@+id/imageView8" />
+
+            <TextView
+                android:id="@+id/tv_Time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/cairo_regular"
+                android:textSize="@dimen/_11ssp"
+                android:layout_marginStart="@dimen/_6sdp"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView9"
+                app:layout_constraintStart_toEndOf="@+id/imageView9"
+                app:layout_constraintTop_toTopOf="@+id/imageView9"
+                tools:text="20/10/2021 ، 11:00ص" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_startOrder"
+                android:layout_width="@dimen/_110sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:backgroundTint="@color/green_crayola"
+                android:fontFamily="@font/cairo_semibold"
+                android:stateListAnimator="@null"
+                android:text="@string/start_order"
+                android:textAllCaps="false"
+                android:textSize="@dimen/_12ssp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/imageView9"
+                app:layout_constraintTop_toBottomOf="@+id/imageView9" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_cancelOrder"
+                android:layout_width="@dimen/_110sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:backgroundTint="@color/bright_gray"
+                android:fontFamily="@font/cairo_semibold"
+                android:stateListAnimator="@null"
+                android:text="@string/cancel_order"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12ssp"
+                app:layout_constraintBottom_toBottomOf="@+id/btn_startOrder"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/btn_startOrder" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

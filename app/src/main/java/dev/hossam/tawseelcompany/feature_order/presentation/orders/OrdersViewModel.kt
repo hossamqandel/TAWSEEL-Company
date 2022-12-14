@@ -40,17 +40,24 @@ class OrdersViewModel @Inject constructor(
     private fun getOrders(event: OrdersFilterEvent) {
         getOrdersJob?.cancel()
         getOrdersJob = viewModelScope.launch(dispatcher.io) {
-            useCases.getOrdersUseCase(event = event).collect { resource ->
+            useCases.getOrdersUseCase(event = event).collectLatest { resource ->
                 when(resource){
-                    is Resource.Loading -> {}
+                    is Resource.Loading -> {
+                        _uiEvent.emit(UiEvent.Shimmer(true))
+                        _uiEvent.emit(UiEvent.View(false))
+                    }
 
                     is Resource.Success -> {
                         _state.value = state.value.copy(
-                            orders = resource.data!!,
+                            orders = resource.data ?: emptyList(),
                             event = event)
+                        _uiEvent.emit(UiEvent.Shimmer(false))
+                        _uiEvent.emit(UiEvent.View(true))
                     }
 
                     is Resource.Error -> {
+                        _uiEvent.emit(UiEvent.View(false))
+                        _uiEvent.emit(UiEvent.Shimmer(true))
                         resource.message?.let { errorMessage -> _uiEvent.emit(UiEvent.ShowSnackBar(errorMessage)) }
                     }
                 }

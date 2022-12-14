@@ -22,22 +22,24 @@ class GetOrdersUseCase constructor(
     operator fun invoke(event: OrdersFilterEvent): Flow<Resource<List<Data>>> = flow {
         try {
             emit(Resource.Loading())
-            delay(800L)
-
+            delay(1500L)
             when(event){
-                OrdersFilterEvent.All -> emit(Resource.Success(getAll()))
-                OrdersFilterEvent.InStock -> emit(Resource.Success(getInStock()))
-                OrdersFilterEvent.Started -> emit(Resource.Success(getStarted()))
-                OrdersFilterEvent.Completed -> emit(Resource.Success(getCompleted()))
-                OrdersFilterEvent.Canceled -> emit(Resource.Success(getCanceled()))
-                OrdersFilterEvent.Refused -> emit(Resource.Success(getRefused()))
+                is OrdersFilterEvent.All -> emit(Resource.Success(getAll()))
+                is OrdersFilterEvent.InStock -> emit(Resource.Success(getInStock()))
+                is OrdersFilterEvent.Started -> emit(Resource.Success(getStarted()))
+                is OrdersFilterEvent.Completed -> emit(Resource.Success(getCompleted()))
+                is OrdersFilterEvent.Canceled -> emit(Resource.Success(getCanceled()))
+                is OrdersFilterEvent.Refused -> emit(Resource.Success(getRefused()))
             }
         } catch (e: IOException){
             Log.i(TAG, "invoke: $e")
             emit(Resource.Error(Localization.CHECK_INTERNET_CONNECTION))
         } catch (e: HttpException){
             Log.i(TAG, "invoke: $e")
-            //TODO
+            when(e.code()){
+                401 -> emit(Resource.Error(Localization.NOT_AUTHORIZED))
+                else -> emit(Resource.Error(Localization.UNKNOWN_ERROR))
+            }
         }
     }
 

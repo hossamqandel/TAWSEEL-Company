@@ -36,6 +36,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.splashFragment -> { findViewById<BottomNavigationView>(R.id.bottomNavView).visibility = View.GONE }
                 R.id.loginFragment -> { findViewById<BottomNavigationView>(R.id.bottomNavView).visibility = View.GONE }
                 R.id.registrationFragment -> { findViewById<BottomNavigationView>(R.id.bottomNavView).visibility = View.GONE }
+                R.id.orderDetailsFragment -> { findViewById<BottomNavigationView>(R.id.bottomNavView).visibility = View.GONE }
 //                R.id.notificationsFragment -> { findViewById<BottomNavigationView>(R.id.bottomNavView).visibility = View.GONE }
                 else -> {
                     findViewById<BottomNavigationView>(R.id.bottomNavView).visibility = View.VISIBLE }

@@ -50,9 +50,16 @@
     <string name="unknown_error">حدث خطأ غير معروف. حاول مرة اخرى</string>
     <string name="invalid_data_input">البيانات التي ادخلتها غير صحيحه</string>
 
+    <string name="not_completed">لم يكتمل</string>
+    <string name="start_order">بدأ الطلب</string>
+    <string name="finish_order">انهاء الطلب</string>
+    <string name="show_order_details">عرض تفاصيل الطلب</string>
 
-
-
+    <string name="all_orders">كل الطلبات</string>
+    <string name="new_orders">الطلبات الجديده</string>
+    <string name="expired_orders">الطلبات المنتهية</string>
+    <string name="canceled">ملغي</string>
+    <string name="delivery_is_underway">قيد التوصيل</string>
 
 
 </resources>

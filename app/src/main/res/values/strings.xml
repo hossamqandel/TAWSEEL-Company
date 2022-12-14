@@ -52,5 +52,16 @@
     <string name="invalid_data_input">The given data was invalid</string>
 
 
+    <string name="start_order">Start order</string>
+    <string name="show_order_details">Show order details</string>
+    <string name="finish_order">Finish order</string>
+    <string name="not_completed">Not completed</string>
+
+    <string name="all_orders">All Orders</string>
+    <string name="new_orders">New orders</string>
+    <string name="expired_orders">Expired orders</string>
+    <string name="canceled">Canceled</string>
+    <string name="delivery_is_underway">Delivery is underway</string>
+
 
 </resources>

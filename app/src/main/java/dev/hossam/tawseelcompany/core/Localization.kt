@@ -15,5 +15,9 @@ object Localization {
     const val PASSWORD_UPDATED_SUCCESSFULLY = R.string.password_updated_successfully.toString()
     const val PROFILE_UPDATED_SUCCESSFULLY = R.string.profile_updated_successfully.toString()
     const val LOGIN_SUCCESSFULLY = R.string.login_successfully.toString()
+    const val ALL_ORDERS = R.string.all_orders.toString()
+    const val CURRENT_ORDERS = R.string.current_orders.toString()
+    const val COMPLETED_ORDERS = R.string.completed.toString()
+    const val EXPIRED_ORDERS = R.string.expired_orders.toString()
 
 }

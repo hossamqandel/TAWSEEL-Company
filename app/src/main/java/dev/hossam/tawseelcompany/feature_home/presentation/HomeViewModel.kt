@@ -66,7 +66,7 @@ class HomeViewModel @Inject constructor(
 
                 is Resource.Error -> {
                     _uiEvent.send(UiEvent.View(false))
-                    _uiEvent.send(UiEvent.Shimmer(false))
+                    _uiEvent.send(UiEvent.Shimmer(true))
                     _uiEvent.send(UiEvent.Box(true))
                     resource.message?.let { errorMessage -> _uiEvent.send(UiEvent.ShowSnackBar(errorMessage)) }
                 }
