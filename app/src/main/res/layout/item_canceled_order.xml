@@ -31,7 +31,7 @@
                 android:textSize="@dimen/_12ssp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                android:text="@string/canceled" />
+                android:text="@string/cancelled" />
 
             <TextView
                 android:id="@+id/itemCanceled_tv_OrderNumber"

@@ -11,6 +11,7 @@
     <string name="password">Password</string>
 
     <string name="permission_denied">Please allow all needed permissions to continue</string>
+    <string name="permission_call_phone_denied">Please allow phone call permission to continue</string>
     <string name="new_registration">New Registration</string>
     <string name="full_name">Full Name</string>
     <string name="tax_registry_number">Tax Registry Number</string>
@@ -59,9 +60,22 @@
 
     <string name="all_orders">All Orders</string>
     <string name="new_orders">New orders</string>
+    <string name="completed_orders">Completed orders</string>
     <string name="expired_orders">Expired orders</string>
-    <string name="canceled">Canceled</string>
+    <string name="refused">Refused</string>
+    <string name="in_stock">In Stock</string>
+    <string name="cancelled">Cancelled</string>
     <string name="delivery_is_underway">Delivery is underway</string>
+
+
+    <string name="call_the_customer">Call the customer</string>
+    <string name="order_Details">Order Details</string>
+    <string name="customer_info">Customer info</string>
+    <string name="customer_name">Customer Name</string>
+    <string name="customer_address">Customer Address</string>
+    <string name="payment_type">Payment Type</string>
+    <string name="customer_phone">Customer Phone</string>
+    <string name="cancellation_reason">Cancellation Reason</string>
 
 
 </resources>

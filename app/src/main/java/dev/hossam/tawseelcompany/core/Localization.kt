@@ -19,5 +19,9 @@ object Localization {
     const val CURRENT_ORDERS = R.string.current_orders.toString()
     const val COMPLETED_ORDERS = R.string.completed.toString()
     const val EXPIRED_ORDERS = R.string.expired_orders.toString()
+    const val IN_STOCK = R.string.in_stock.toString()
+    const val CANCELLED = R.string.cancelled.toString()
+    const val REFUSED = R.string.refused.toString()
+    const val STARTED = R.string.delivery_is_underway.toString()
 
 }

@@ -1,6 +1,6 @@
 package dev.hossam.tawseelcompany.feature_order.data.remote.dto
 
-data class OrdersDto(
+data class OrderDto(
     val `data`: List<Data>
 )
 
@@ -13,11 +13,11 @@ data class Data(
     val date: String,
     val end: String,
     val id: Int,
-    val items: List<Item>,
+    var items: List<Item>,
     val other_phone: String,
     val phone: String,
     val reasons: Any,
-    val shipping : String,
+    val shipping: String,
     val start: String,
     val status: String,
     val total: String

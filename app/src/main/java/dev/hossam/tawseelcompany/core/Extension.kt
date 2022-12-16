@@ -149,6 +149,32 @@ fun Context.showToast(message: String) {
     Toast.makeText(this, message, Toast.LENGTH_LONG).show()
 }
 
+
+fun String.asResourceStatusString(context: Context
+): SpannableStringBuilder = when(this.lowercase()){
+        Const.COMPLETED.lowercase() -> context.resources.getString(Localization.COMPLETED_ORDERS.toInt()).changeStringColor()
+        Const.CANCELLED.lowercase() -> context.resources.getString(Localization.CANCELLED.toInt()).changeStringColor()
+        Const.IN_STOCK.lowercase() -> context.resources.getString(Localization.IN_STOCK.toInt()).changeStringColor()
+        Const.REFUSED.lowercase() -> context.resources.getString(Localization.REFUSED.toInt()).changeStringColor()
+        Const.STARTED.lowercase() -> context.resources.getString(Localization.STARTED.toInt()).changeStringColor()
+        else -> SpannableStringBuilder(this)
+}
+
+private fun String.changeStringColor(): SpannableStringBuilder {
+    val mBuilder = SpannableStringBuilder()
+    val firstIdx by lazy { 0 }
+    val lastIdx by lazy { this.lastIndex + 1 }
+    val redSpannable = SpannableString(this)
+    when(this.lowercase()){
+        Const.COMPLETED.lowercase() -> redSpannable.setSpan(ForegroundColorSpan(Color.parseColor(Const.STATUS_COLOR_COMPLETED)), firstIdx, lastIdx, 0)
+        Const.CANCELLED.lowercase() -> redSpannable.setSpan(ForegroundColorSpan(Color.parseColor(Const.STATUS_COLOR_CANCELLED)), firstIdx, lastIdx, 0)
+        Const.IN_STOCK.lowercase() -> redSpannable.setSpan(ForegroundColorSpan(Color.parseColor(Const.STATUS_COLOR_IN_STOCK)), firstIdx, lastIdx, 0)
+        Const.REFUSED.lowercase() -> redSpannable.setSpan(ForegroundColorSpan(Color.parseColor(Const.STATUS_COLOR_REFUSED)), firstIdx, lastIdx, 0)
+        Const.STARTED.lowercase() -> redSpannable.setSpan(ForegroundColorSpan(Color.parseColor(Const.STATUS_COLOR_STARTED)), firstIdx, lastIdx, 0)
+    }
+    return mBuilder.append(redSpannable)
+}
+
 fun Fragment.navigate(navId: Int) {
     findNavController().navigate(navId)
 }

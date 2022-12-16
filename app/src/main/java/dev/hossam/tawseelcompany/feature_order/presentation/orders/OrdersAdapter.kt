@@ -27,6 +27,7 @@ class OrdersAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             val direction by lazy {
                 OrdersFragmentDirections.actionOrdersFragmentToOrderDetailsFragment(orderId = id.toString())
             }
+            Navigation.findNavController(view).clearBackStack(R.id.orderDetailsFragment)
             Navigation.findNavController(view).navigate(directions = direction)
         }
     }

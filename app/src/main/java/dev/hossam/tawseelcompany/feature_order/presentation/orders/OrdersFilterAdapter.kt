@@ -17,7 +17,7 @@ class OrdersFilterAdapter constructor(
     private val TAG by lazy { OrdersFilterAdapter::class.java.simpleName }
 
     private val ALL_ORDERS by lazy { appContext.getString(R.string.all_orders) }
-    private val COMPLETED_ORDERS by lazy { appContext.getString(R.string.completed) }
+    private val COMPLETED_ORDERS by lazy { appContext.getString(R.string.completed_orders) }
     private val CURRENT_ORDERS by lazy { appContext.getString(R.string.current_orders) }
     private val EXPIRED_ORDERS by lazy { appContext.getString(R.string.expired_orders) }
 

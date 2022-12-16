@@ -5,7 +5,6 @@ import dev.hossam.tawseelcompany.core.Const
 import dev.hossam.tawseelcompany.core.Localization
 import dev.hossam.tawseelcompany.core.Resource
 import dev.hossam.tawseelcompany.feature_order.data.remote.dto.Data
-import dev.hossam.tawseelcompany.feature_order.data.remote.dto.OrdersDto
 import dev.hossam.tawseelcompany.feature_order.domain.repository.IOrderRepository
 import dev.hossam.tawseelcompany.feature_order.presentation.orders.OrdersFilterEvent
 import kotlinx.coroutines.delay
@@ -22,7 +21,7 @@ class GetOrdersUseCase constructor(
     operator fun invoke(event: OrdersFilterEvent): Flow<Resource<List<Data>>> = flow {
         try {
             emit(Resource.Loading())
-            delay(1500L)
+            delay(1800L)
             when(event){
                 is OrdersFilterEvent.All -> emit(Resource.Success(getAll()))
                 is OrdersFilterEvent.InStock -> emit(Resource.Success(getInStock()))

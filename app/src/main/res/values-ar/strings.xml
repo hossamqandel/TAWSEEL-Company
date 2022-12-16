@@ -26,7 +26,7 @@
     <string name="cost">التكلفة </string>
     <string name="order_number">رقم الطلب #</string>
     <string name="egp">ج.م</string>
-    <string name="completed">مكتمل</string>
+
     <string name="no_available_data">لا توجد بيانات متاحة</string>
 
     <string name="address">العنوان</string>
@@ -57,9 +57,27 @@
 
     <string name="all_orders">كل الطلبات</string>
     <string name="new_orders">الطلبات الجديده</string>
+    <string name="completed_orders">الطلبات المكتملة</string>
     <string name="expired_orders">الطلبات المنتهية</string>
-    <string name="canceled">ملغي</string>
+
+
+    <string name="cancelled">ملغي</string>
+    <string name="completed">مكتمل</string>
+    <string name="refused">مرفوض</string>
+    <string name="in_stock">قيد القبول</string>
     <string name="delivery_is_underway">قيد التوصيل</string>
+
+    <string name="permission_call_phone_denied">الرجاء السماح لاذن الاتصال للمتابعة</string>
+
+
+    <string name="call_the_customer">اتصل بالعميل</string>
+    <string name="order_Details">تفاصيل الطلب</string>
+    <string name="customer_info">بيانات العميل</string>
+    <string name="customer_name">Customer Name</string>
+    <string name="customer_address">Customer Address</string>
+    <string name="payment_type">Payment Type</string>
+    <string name="customer_phone">Customer Phone</string>
+    <string name="cancellation_reason">سبب الإلغاء</string>
 
 
 </resources>

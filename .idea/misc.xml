@@ -12,7 +12,7 @@
         <entry key="..\:/AndroidProjects/TAWSEELCompany/app/src/main/res/layout/fragment_create_order.xml" value="0.25416666666666665" />
         <entry key="..\:/AndroidProjects/TAWSEELCompany/app/src/main/res/layout/fragment_home.xml" value="0.4" />
         <entry key="..\:/AndroidProjects/TAWSEELCompany/app/src/main/res/layout/fragment_login.xml" value="0.25416666666666665" />
-        <entry key="..\:/AndroidProjects/TAWSEELCompany/app/src/main/res/layout/fragment_order_details.xml" value="0.25416666666666665" />
+        <entry key="..\:/AndroidProjects/TAWSEELCompany/app/src/main/res/layout/fragment_order_details.xml" value="0.264" />
         <entry key="..\:/AndroidProjects/TAWSEELCompany/app/src/main/res/layout/fragment_orders.xml" value="0.25416666666666665" />
         <entry key="..\:/AndroidProjects/TAWSEELCompany/app/src/main/res/layout/fragment_profile.xml" value="0.25416666666666665" />
         <entry key="..\:/AndroidProjects/TAWSEELCompany/app/src/main/res/layout/fragment_registration.xml" value="0.264" />
@@ -21,12 +21,17 @@
         <entry key="..\:/AndroidProjects/TAWSEELCompany/app/src/main/res/layout/item_completed_order.xml" value="0.4" />
         <entry key="..\:/AndroidProjects/TAWSEELCompany/app/src/main/res/layout/item_expired_order.xml" value="0.25416666666666665" />
         <entry key="..\:/AndroidProjects/TAWSEELCompany/app/src/main/res/layout/item_instock_order.xml" value="0.25416666666666665" />
+        <entry key="..\:/AndroidProjects/TAWSEELCompany/app/src/main/res/layout/item_items.xml" value="0.4" />
         <entry key="..\:/AndroidProjects/TAWSEELCompany/app/src/main/res/layout/item_orders_filter_types.xml" value="0.25416666666666665" />
         <entry key="..\:/AndroidProjects/TAWSEELCompany/app/src/main/res/layout/item_started_order.xml" value="0.25416666666666665" />
         <entry key="..\:/AndroidProjects/TAWSEELCompany/app/src/main/res/layout/no_data_available.xml" value="0.25416666666666665" />
         <entry key="..\:/AndroidProjects/TAWSEELCompany/app/src/main/res/layout/shimmer_home.xml" value="0.264" />
+        <entry key="..\:/AndroidProjects/TAWSEELCompany/app/src/main/res/layout/shimmer_order_details.xml" value="0.25416666666666665" />
         <entry key="..\:/AndroidProjects/TAWSEELCompany/app/src/main/res/layout/shimmer_orders.xml" value="0.25416666666666665" />
         <entry key="..\:/AndroidProjects/TAWSEELCompany/app/src/main/res/layout/shimmer_profile.xml" value="0.253125" />
+        <entry key="..\:/AndroidProjects/TAWSEELCompany/app/src/main/res/layout/temp_customer_info.xml" value="0.4" />
+        <entry key="..\:/AndroidProjects/TAWSEELCompany/app/src/main/res/layout/temp_line_view.xml" value="0.25416666666666665" />
+        <entry key="..\:/AndroidProjects/TAWSEELCompany/app/src/main/res/layout/temp_order_details.xml" value="0.253125" />
         <entry key="..\:/AndroidProjects/TAWSEELCompany/app/src/main/res/menu/bottom_nav_menu.xml" value="0.253125" />
       </map>
     </option>

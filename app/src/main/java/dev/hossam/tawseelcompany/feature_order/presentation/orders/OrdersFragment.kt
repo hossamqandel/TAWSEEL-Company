@@ -18,7 +18,6 @@ import javax.inject.Inject
 class OrdersFragment : BaseFragment<FragmentOrdersBinding>(FragmentOrdersBinding::inflate) {
 
     private val TAG by lazy { OrdersFragment::class.java.simpleName }
-//    @Inject lateinit var adapterOrdersFilterTypes: OrdersFilterAdapter
     private val adapterOrders by lazy { OrdersAdapter() }
     private val adapterOrdersFilterTypes by lazy { OrdersFilterAdapter(requireContext()) }
     private val viewModel: OrdersViewModel by viewModels()
@@ -36,10 +35,6 @@ class OrdersFragment : BaseFragment<FragmentOrdersBinding>(FragmentOrdersBinding
         adapterOrdersFilterTypes.onFilterEventClick = { filterEvent ->
             viewModel.onEvent(filterEvent)
         }
-
-//        adapterOrders.onItemClick = { orderId ->
-//            Log.i(TAG, "onClicks: $orderId")
-//        }
     }}
 
 

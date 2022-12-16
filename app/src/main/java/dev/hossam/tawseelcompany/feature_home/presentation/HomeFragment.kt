@@ -42,7 +42,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
                 mGlide.load(photoUrl).into(homeIvCompany)
                 homeTvCompanyName.text = name
                 homeTvCurrentLocation.text = location
-                homeTvOrderStatus.text = requireContext().getOrderStringIdByStatus(orderStatus)
+                homeTvOrderStatus.text = orderStatus.asResourceStatusString(requireContext())
                 homeTvOrderNumber.append(orderNumber)
             }
         }

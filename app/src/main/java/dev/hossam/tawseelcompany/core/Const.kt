@@ -28,6 +28,12 @@ object Const {
     const val IN_STOCK = "in stock"
     const val CANCELLED = "cancelled"
 
+    const val STATUS_COLOR_COMPLETED = "#15C975"
+    const val STATUS_COLOR_IN_STOCK = "#15C975"
+    const val STATUS_COLOR_STARTED = "#FF6600"
+    const val STATUS_COLOR_REFUSED = "#EB2323"
+    const val STATUS_COLOR_CANCELLED = "#EB2323"
+
     const val RESTAURANT_PIC = "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/McDonald%27s_SVG_logo.svg/2095px-McDonald%27s_SVG_logo.svg.png"
     const val DRIVER_PIC = "https://media.istockphoto.com/photos/m-on-my-way-picture-id635967404?b=1&k=20&m=635967404&s=170667a&w=0&h=Y0q6o_u351FikOUk2td8qOcEcrUDaAaf3DHzHzCWnok="
     const val RESTAURANT_FAKE_NAME = "McDonald's"
